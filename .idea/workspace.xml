@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7936d46-6cc1-47c7-8382-6397f3e0490e" name="Changes" comment="final">
-      <change afterPath="$PROJECT_DIR$/zad3/A-n32-k5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zad3/A-n80-k10.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zad3/main.py" afterDir="false" />
+    <list default="true" id="b7936d46-6cc1-47c7-8382-6397f3e0490e" name="Changes" comment="zadanie 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zad3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/zad3/main.py" afterDir="false" />
+    </list>
+    <list id="88888169-d790-4563-97c4-898b33532fa9" name="Changes by UZYTKOWNIK 1" comment="">
+      <change beforePath="$PROJECT_DIR$/zad3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/zad3/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/zad3/main.py">
+      <ranges>
+        <range start1="115" end1="116" start2="115" end2="116" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
+        <range start1="117" end1="118" start2="117" end2="119" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
+        <range start1="119" end1="121" start2="120" end2="122" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
+        <range start1="122" end1="124" start2="123" end2="127" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
+        <range start1="125" end1="131" start2="128" end2="128" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
+        <range start1="132" end1="132" start2="129" end2="131" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
+        <range start1="133" end1="140" start2="132" end2="176" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
+        <range start1="143" end1="144" start2="179" end2="180" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
+        <range start1="147" end1="147" start2="183" end2="184" changelist="88888169-d790-4563-97c4-898b33532fa9" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -34,24 +50,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.data.executor": "Run",
-    "Python.main (1).executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/ceend/Desktop/metaheurystyki/zad3",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ceend/Desktop/metaheurystyki/zad3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ceend\Desktop\metaheurystyki\zad3" />
@@ -140,7 +156,9 @@
       <workItem from="1732897660057" duration="17000" />
       <workItem from="1732897709641" duration="66000" />
       <workItem from="1732897895486" duration="37000" />
-      <workItem from="1732984314318" duration="15910000" />
+      <workItem from="1732984314318" duration="16170000" />
+      <workItem from="1733346998669" duration="198000" />
+      <workItem from="1733866763949" duration="9464000" />
     </task>
     <task id="LOCAL-00001" summary="zad1">
       <option name="closed" value="true" />
@@ -174,20 +192,40 @@
       <option name="project" value="LOCAL" />
       <updated>1732739106473</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="zadanie 3">
+      <option name="closed" value="true" />
+      <created>1733001014175</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733001014175</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="zad1" />
     <MESSAGE value="zad2" />
     <MESSAGE value="final" />
-    <option name="LAST_COMMIT_MESSAGE" value="final" />
+    <MESSAGE value="zadanie 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="zadanie 3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/metaheurystyki$main.coverage" NAME="main Coverage Results" MODIFIED="1733000576361" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zad3" />
+    <SUITE FILE_PATH="coverage/metaheurystyki$main.coverage" NAME="main Coverage Results" MODIFIED="1733876150731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zad3" />
     <SUITE FILE_PATH="coverage/metaheurystyki$data.coverage" NAME="data Coverage Results" MODIFIED="1732647431270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zad2" />
     <SUITE FILE_PATH="coverage/metaheurystyki$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1732985094155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zad1" />
     <SUITE FILE_PATH="coverage/metaheurystyki$test.coverage" NAME="test Coverage Results" MODIFIED="1732997770684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zad3" />

@@ -113,35 +113,71 @@ class Ant:
         return distance_sum
 
 
-def draw_path(path, id_map):
+def draw_path(path, id_map, ax):
     x_coords, y_coords = zip(*path)
-    print(x_coords, y_coords)
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(x_coords + (x_coords[0],), y_coords + (y_coords[0],), marker='o', linestyle='-', color='b')
+    ax.plot(x_coords, y_coords, marker='o', linestyle='-', color='b')
 
-    for i, (x, y) in enumerate(path):
-        plt.text(x, y, f'{id_map[(x, y)]}', fontsize=9, ha='right', va='bottom')
+    #for i, (x, y) in enumerate(path):
+    #    plt.text(x, y, f'{id_map[(x, y)]}', fontsize=9, ha='right', va='bottom')
 
-    plt.title('Path Visualization')
-    plt.xlabel('X Coordinate')
-    plt.ylabel('Y Coordinate')
-    plt.grid(True)
-    plt.axis('equal')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.grid(True)
+    ax.axis('equal')
+
+
+def run(n_ants, random_choice_probability, alpha, beta, iterations, evaporation_rate):
+    fig, axs = plt.subplots(5, 2, figsize=(10, 16))
+
+    title = (f'Liczba mrówek: {n_ants}  Szansa losowej atrakcji: {random_choice_probability}\n'
+             f'α: {alpha}  β: {beta}\n'
+             f'Iteracji: {iterations}  Współczynnik parowania: {evaporation_rate}\n')
+
+    for j, filename in enumerate(filenames):
+        sum_ = 0
+        best = math.inf
+        worst = 0
+        for i in range(5):
+            places, id_map = load_places_from_file(filename)
+            colony = AntColony(n_ants, random_choice_probability, alpha, beta, iterations,
+                               evaporation_rate, places)
+            best_path, best_distance = colony.run()
+            sum_ += best_distance
+            if best_distance < best:
+                best = best_distance
+            if best_distance > worst:
+                worst = best_distance
+            draw_path(best_path, id_map, axs[i, j])
+            axs[i, j].set_title(f'Długość: {best_distance:.2f}')
+        title += f'Plik {filename} - Najgorszy wynik: {worst:.2f}  Najlepszy wynik: {best:.2f}  Średni: {(sum_ / 5):.2f}\n'
+
+    fig.suptitle(title)
+    plt.tight_layout()
     plt.show()
 
+# a: 5, 500
+# b: 0.01, 0.5
+# c: 0.5, 10
+# d: 0.5, 10
+# e: 5, 500
+# f: 0.05, 0.7
 
-def main():
-    places, id_map = load_places_from_file('A-n80-k10.txt')
-    colony = AntColony(500, 0.05, 2, 3, 100,
-                       0.3, places)
-    best_path, best_distance = colony.run()
-    draw_path(best_path, id_map)
-    print(f'shortest_distance: {best_distance}, best path: {best_path}')
+
+params = {'n_ants': 100,
+          'random_choice_probability': 0.05,
+          'alpha': 2,
+          'beta': 3,
+          'iterations': 100,
+          'evaporation_rate': 0.8}
+
+filenames = ['A-n32-k5.txt',
+             'A-n80-k10.txt'
+             ]
 
 
 if __name__ == '__main__':
-    main()
+    run(**params)
 
 # best 425.36162526086196 dla n32????
 # best 754.6628643342029 dla n80????
