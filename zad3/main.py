@@ -118,9 +118,6 @@ def draw_path(path, id_map, ax):
 
     ax.plot(x_coords, y_coords, marker='o', linestyle='-', color='b')
 
-    #for i, (x, y) in enumerate(path):
-    #    plt.text(x, y, f'{id_map[(x, y)]}', fontsize=9, ha='right', va='bottom')
-
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.grid(True)
@@ -150,7 +147,8 @@ def run(n_ants, random_choice_probability, alpha, beta, iterations, evaporation_
                 worst = best_distance
             draw_path(best_path, id_map, axs[i, j])
             axs[i, j].set_title(f'Długość: {best_distance:.2f}')
-        title += f'Plik {filename} - Najgorszy wynik: {worst:.2f}  Najlepszy wynik: {best:.2f}  Średni: {(sum_ / 5):.2f}\n'
+        title += (f'Plik {filename} - Najgorszy wynik: {worst:.2f}  '
+                  f'Najlepszy wynik: {best:.2f}  Średni: {(sum_ / 5):.2f}\n')
 
     fig.suptitle(title)
     plt.tight_layout()
@@ -178,6 +176,3 @@ filenames = ['A-n32-k5.txt',
 
 if __name__ == '__main__':
     run(**params)
-
-# best 425.36162526086196 dla n32????
-# best 754.6628643342029 dla n80????

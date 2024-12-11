@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7936d46-6cc1-47c7-8382-6397f3e0490e" name="Changes" comment="zadanie 3">
+    <list default="true" id="b7936d46-6cc1-47c7-8382-6397f3e0490e" name="Changes" comment="zmiana pod sprawko">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zad3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/zad3/main.py" afterDir="false" />
     </list>
-    <list id="88888169-d790-4563-97c4-898b33532fa9" name="Changes by UZYTKOWNIK 1" comment="">
-      <change beforePath="$PROJECT_DIR$/zad3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/zad3/main.py" afterDir="false" />
-    </list>
+    <list id="88888169-d790-4563-97c4-898b33532fa9" name="Changes by UZYTKOWNIK 1" comment="zmiana pod sprawko" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,21 +23,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/zad3/main.py">
-      <ranges>
-        <range start1="115" end1="116" start2="115" end2="116" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
-        <range start1="117" end1="118" start2="117" end2="119" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
-        <range start1="119" end1="121" start2="120" end2="122" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
-        <range start1="122" end1="124" start2="123" end2="127" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
-        <range start1="125" end1="131" start2="128" end2="128" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
-        <range start1="132" end1="132" start2="129" end2="131" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
-        <range start1="133" end1="140" start2="132" end2="176" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
-        <range start1="143" end1="144" start2="179" end2="180" changelist="b7936d46-6cc1-47c7-8382-6397f3e0490e" />
-        <range start1="147" end1="147" start2="183" end2="184" changelist="88888169-d790-4563-97c4-898b33532fa9" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -73,7 +56,7 @@
       <recent name="C:\Users\ceend\Desktop\metaheurystyki\zad3" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="metaheurystyki" />
       <option name="ENV_FILES" value="" />
@@ -158,7 +141,8 @@
       <workItem from="1732897895486" duration="37000" />
       <workItem from="1732984314318" duration="16170000" />
       <workItem from="1733346998669" duration="198000" />
-      <workItem from="1733866763949" duration="9464000" />
+      <workItem from="1733866763949" duration="9500000" />
+      <workItem from="1733960345907" duration="373000" />
     </task>
     <task id="LOCAL-00001" summary="zad1">
       <option name="closed" value="true" />
@@ -200,7 +184,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733001014175</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="zmiana pod sprawko">
+      <option name="closed" value="true" />
+      <created>1733876335311</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733876335311</updated>
+    </task>
+    <task id="LOCAL-00007" summary="zmiana pod sprawko">
+      <option name="closed" value="true" />
+      <created>1733876354833</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733876354833</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +222,9 @@
     <MESSAGE value="zad2" />
     <MESSAGE value="final" />
     <MESSAGE value="zadanie 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="zadanie 3" />
+    <MESSAGE value="Changes by UZYTKOWNIK 1" />
+    <MESSAGE value="zmiana pod sprawko" />
+    <option name="LAST_COMMIT_MESSAGE" value="zmiana pod sprawko" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/metaheurystyki$main.coverage" NAME="main Coverage Results" MODIFIED="1733876150731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zad3" />
