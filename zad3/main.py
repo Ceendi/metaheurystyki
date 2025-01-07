@@ -167,7 +167,7 @@ params = {'n_ants': 100,
           'alpha': 2,
           'beta': 3,
           'iterations': 100,
-          'evaporation_rate': 0.8}
+          'evaporation_rate': 0.3}
 
 filenames = ['A-n32-k5.txt',
              'A-n80-k10.txt'
