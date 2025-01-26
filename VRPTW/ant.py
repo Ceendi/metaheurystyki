@@ -28,11 +28,10 @@ class Ant:
             sum_prob = 0
 
             for customer in valid_customers:
-                pheromone_value = pheromones[self.current_position.no][customer.no] ** alpha
-                distance_value = (1 / distances[self.current_position.no][customer.no]) ** beta
-                time_penalty = 1.003 ** (max(0, customer.due_date - self.time))
-                capacity_penalty = 1.001 ** (max(0, capacity - (self.weight + customer.demand)))
-                probability = pheromone_value * distance_value * (1 / (1 + time_penalty + capacity_penalty))
+                pheromone_value = pheromones[self.current_position.no, customer.no] ** alpha
+                distance_value = (1 / distances[self.current_position.no, customer.no]) ** beta
+                time_penalty = 1.005 ** (max(0, customer.due_date - self.time))
+                probability = pheromone_value * distance_value * (1 / (1 + time_penalty))
                 probabilities.append(probability)
                 sum_prob += probability
 
@@ -59,6 +58,6 @@ class Ant:
     def calculate_distance(self, distances) -> float:
         distance_sum = 0
         for location1, location2 in zip(self.path[:-1], self.path[1:]):
-            distance_sum += distances[location1.no][location2.no]
+            distance_sum += distances[location1.no, location2.no]
 
         return distance_sum

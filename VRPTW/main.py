@@ -13,7 +13,7 @@ def parse_file(filename):
             line = line.split()
             data.append(
                 Customer(
-                    int(line[0]),
+                    int(line[0]) - 1,
                     float(line[1]),
                     float(line[2]),
                     float(line[3]),
@@ -28,8 +28,8 @@ def parse_file(filename):
 if __name__ == "__main__":
     customers = parse_file("r101.txt")
 
-    colony = AntColony(alpha=3, beta=1, capacity=200, customers=customers, evaporation_rate=0.1, iterations=200,
-                       n_ants=300)
+    colony = AntColony(alpha=2, beta=1, capacity=200, customers=customers, evaporation_rate=0.05, iterations=200,
+                       n_ants=200)
 
     twoopt = TwoOpt()
 

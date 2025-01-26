@@ -1,8 +1,8 @@
 import math
-from collections import defaultdict
-
+import numpy as np
 from customer import Customer
 from ant import Ant
+from concurrent.futures import ProcessPoolExecutor
 
 
 class AntColony:
@@ -13,64 +13,67 @@ class AntColony:
         self.iterations = iterations
         self.evaporation_rate = evaporation_rate
         self.customers: list[Customer] = customers
-        self.distances = self.calculate_distance()
         self.ant_colony: list[Ant] = []
         self.capacity = capacity
-        self.pheromones = defaultdict(lambda: defaultdict(lambda: 1.0))
-        for customer1 in customers:
-            for customer2 in customers:
-                if customer1 is not customer2:
-                    self.pheromones[customer1.no][customer2.no] = 1.0
 
-    def update_pheromones(self, best_ant):
-        for customer1 in self.customers:
-            for customer2 in self.customers:
-                if customer1 != customer2:
-                    self.pheromones[customer1.no][customer2.no] *= (1 - self.evaporation_rate)
+        self.distances = self.calculate_distance()
+        self.pheromones = np.ones((len(self.customers), len(self.customers)))
 
-        for customer1, customer2 in zip(best_ant.path[:-1], best_ant.path[1:]):
-            self.pheromones[customer1.no][customer2.no] += 1 / best_ant.calculate_distance(self.distances)
+    def update_pheromones(self, ant_results):
+        self.pheromones *= (1 - self.evaporation_rate)
 
-        for ant in self.ant_colony:
-            for customer1, customer2 in zip(ant.path[:-1], ant.path[1:]):
-                self.pheromones[customer1.no][customer2.no] += 1 / ant.calculate_distance(self.distances)
+        for distance, path in ant_results:
+            pheromone_deposit = 1 / distance
+            for customer1, customer2 in zip(path[:-1], path[1:]):
+                self.pheromones[customer1.no, customer2.no] += pheromone_deposit
 
     def calculate_distance(self):
-        distances = defaultdict(lambda: defaultdict(float))
-        for customer1 in self.customers:
-            for customer2 in self.customers:
-                dist = math.sqrt((customer1.x - customer2.x) ** 2 + (customer1.y - customer2.y) ** 2)
-                if dist == 0:
-                    dist = 1e-10
-                distances[customer1.no][customer2.no] = dist
+        num_customers = len(self.customers)
+        distances = np.zeros((num_customers, num_customers), dtype=np.float32)
+
+        for i in range(num_customers):
+            for j in range(num_customers):
+                if i != j:
+                    dist = math.sqrt((self.customers[i].x - self.customers[j].x) ** 2 +
+                                     (self.customers[i].y - self.customers[j].y) ** 2)
+                    distances[i, j] = dist
+
         return distances
 
     def run(self):
         best_path = None
         best_distance = float('inf')
 
-        for _ in range(self.iterations):
-            self.ant_colony = [Ant(self.customers[0]) for _ in range(self.n_ants)]
-            for ant in self.ant_colony:
-                customers = self.customers[:]
+        with ProcessPoolExecutor() as executor:
+            for _ in range(self.iterations):
+                self.ant_colony = [Ant(self.customers[0]) for _ in range(self.n_ants)]
 
-                while True:
-                    ant.pick_path(self.pheromones, self.distances, customers, self.alpha, self.beta, self.capacity)
+                futures = [executor.submit(self.run_ant, ant) for ant in self.ant_colony]
+                results = [future.result() for future in futures]
 
-                    if len(customers) == 1:
-                        break
+                best_ant = min(results, key=lambda a: a[0])
+                best_distance_iter = best_ant[0]
 
-                    if ant.current_position != self.customers[0]:
-                        customers.remove(ant.current_position)
+                if best_distance_iter < best_distance:
+                    best_distance = best_distance_iter
+                    best_path = best_ant[1]
+                    print(f"Iteration: {_}, best_distance: {best_distance}")
 
-                distance = ant.calculate_distance(self.distances)
-                if distance < best_distance:
-                    best_distance = distance
-                    best_path = ant.path
-                    print(_)
-                    print(best_distance)
-
-            best_ant = min(self.ant_colony, key=lambda a: a.calculate_distance(self.distances))
-            self.update_pheromones(best_ant)
+                self.update_pheromones(results)
 
         return best_path, best_distance
+
+    def run_ant(self, ant):
+        available_customers = self.customers[:]
+
+        while True:
+            ant.pick_path(self.pheromones, self.distances, available_customers, self.alpha, self.beta,
+                          self.capacity)
+
+            if len(available_customers) == 1:
+                break
+
+            if ant.current_position != self.customers[0]:
+                available_customers.remove(ant.current_position)
+
+        return ant.calculate_distance(self.distances), ant.path
