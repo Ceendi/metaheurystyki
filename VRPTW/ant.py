@@ -28,20 +28,20 @@ class Ant:
             sum_prob = 0
 
             for customer in valid_customers:
-                #print(f"no: {customer.no}, x: {customer.x}, y: {customer.y}, dem: {customer.demand}, rdy: {customer.ready_time}, end: {customer.due_date}, service: {customer.service_time}")
-                pheromone_value = pheromones[self.current_position.no][customer.no] ** alpha # 0.8
-                #print(distances[self.current_position.no][customer.no])
-                distance_value = (1 / distances[self.current_position.no][customer.no]) ** beta # 1e-20
-                time_factor = max(1, (customer.due_date - self.time))
-                #print("WARTOSCI")
-                #print(pheromone_value, distance_value, time_factor)
-                probability = pheromone_value * distance_value * (1 / time_factor)
+                pheromone_value = pheromones[self.current_position.no][customer.no] ** alpha
+                distance_value = (1 / distances[self.current_position.no][customer.no]) ** beta
+                time_penalty = 1.003 ** (max(0, customer.due_date - self.time))
+                capacity_penalty = 1.001 ** (max(0, capacity - (self.weight + customer.demand)))
+                probability = pheromone_value * distance_value * (1 / (1 + time_penalty + capacity_penalty))
                 probabilities.append(probability)
                 sum_prob += probability
 
             probabilities = [prob / sum_prob for prob in probabilities]
 
-            picked_customer = random.choices(valid_customers, weights=probabilities, k=1)[0]
+            if random.random() < 0.02:
+                picked_customer = random.choice(valid_customers)
+            else:
+                picked_customer = random.choices(valid_customers, weights=probabilities, k=1)[0]
 
         self.weight += picked_customer.demand
         if self.time < picked_customer.ready_time:

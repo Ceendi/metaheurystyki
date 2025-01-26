@@ -22,11 +22,14 @@ class AntColony:
                 if customer1 is not customer2:
                     self.pheromones[customer1.no][customer2.no] = 1.0
 
-    def update_pheromones(self):
+    def update_pheromones(self, best_ant):
         for customer1 in self.customers:
             for customer2 in self.customers:
                 if customer1 != customer2:
                     self.pheromones[customer1.no][customer2.no] *= (1 - self.evaporation_rate)
+
+        for customer1, customer2 in zip(best_ant.path[:-1], best_ant.path[1:]):
+            self.pheromones[customer1.no][customer2.no] += 1 / best_ant.calculate_distance(self.distances)
 
         for ant in self.ant_colony:
             for customer1, customer2 in zip(ant.path[:-1], ant.path[1:]):
@@ -60,13 +63,14 @@ class AntColony:
                     if ant.current_position != self.customers[0]:
                         customers.remove(ant.current_position)
 
-                obj = [[cust.x, cust.y] for cust in ant.path]
-
                 distance = ant.calculate_distance(self.distances)
                 if distance < best_distance:
                     best_distance = distance
                     best_path = ant.path
+                    print(_)
+                    print(best_distance)
 
-            self.update_pheromones()
+            best_ant = min(self.ant_colony, key=lambda a: a.calculate_distance(self.distances))
+            self.update_pheromones(best_ant)
 
         return best_path, best_distance
