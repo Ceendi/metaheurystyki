@@ -26,10 +26,10 @@ def parse_file(filename):
 
 
 if __name__ == "__main__":
-    customers = parse_file("r101.txt")
+    customers = parse_file("rc101.txt")
 
-    colony = AntColony(alpha=2, beta=1, capacity=200, customers=customers, evaporation_rate=0.05, iterations=200,
-                       n_ants=200)
+    colony = AntColony(alpha=1.5, beta=1, capacity=200, customers=customers, evaporation_rate=0.4, iterations=400,
+                       n_ants=250)
 
     twoopt = TwoOpt()
 

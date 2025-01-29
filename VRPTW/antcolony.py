@@ -19,8 +19,13 @@ class AntColony:
         self.distances = self.calculate_distance()
         self.pheromones = np.ones((len(self.customers), len(self.customers)))
 
-    def update_pheromones(self, ant_results):
+    def update_pheromones(self, ant_results, best_path, best_distance):
         self.pheromones *= (1 - self.evaporation_rate)
+
+        if best_path is not None:
+            elite_deposit = 2 * (1 / best_distance)
+            for c1, c2 in zip(best_path[:-1], best_path[1:]):
+                self.pheromones[c1.no, c2.no] += elite_deposit
 
         for distance, path in ant_results:
             pheromone_deposit = 1 / distance
@@ -59,7 +64,7 @@ class AntColony:
                     best_path = best_ant[1]
                     print(f"Iteration: {_}, best_distance: {best_distance}")
 
-                self.update_pheromones(results)
+                self.update_pheromones(results, best_path, best_distance)
 
         return best_path, best_distance
 
