@@ -3,6 +3,9 @@ import numpy as np
 from customer import Customer
 from ant import Ant
 from concurrent.futures import ProcessPoolExecutor
+from twoopts import TwoOpt
+
+twoopt = TwoOpt()
 
 
 class AntColony:
@@ -52,7 +55,6 @@ class AntColony:
         with ProcessPoolExecutor() as executor:
             for _ in range(self.iterations):
                 self.ant_colony = [Ant(self.customers[0]) for _ in range(self.n_ants)]
-
                 futures = [executor.submit(self.run_ant, ant) for ant in self.ant_colony]
                 results = [future.result() for future in futures]
 
@@ -60,9 +62,9 @@ class AntColony:
                 best_distance_iter = best_ant[0]
 
                 if best_distance_iter < best_distance:
-                    best_distance = best_distance_iter
-                    best_path = best_ant[1]
-                    print(f"Iteration: {_}, best_distance: {best_distance}")
+                    best_path = twoopt.optimize(best_ant[1], self.distances)
+                    best_distance = twoopt.calculate_distance(self.distances, best_path)
+                    print(f"Iteration: {_}, best ant: {best_distance}")
 
                 self.update_pheromones(results, best_path, best_distance)
 

@@ -30,7 +30,7 @@ class Ant:
             for customer in valid_customers:
                 pheromone_value = pheromones[self.current_position.no, customer.no] ** alpha
                 distance_value = (1 / distances[self.current_position.no, customer.no]) ** beta
-                time_penalty = 1.005 ** (max(0, customer.due_date - self.time))
+                time_penalty = 1.01 ** (max(0, customer.due_date - (self.time + customer.service_time)))
                 probability = pheromone_value * distance_value * (1 / (1 + time_penalty))
                 probabilities.append(probability)
                 sum_prob += probability
@@ -43,17 +43,10 @@ class Ant:
                 picked_customer = random.choices(valid_customers, weights=probabilities, k=1)[0]
 
         self.weight += picked_customer.demand
-        if self.time < picked_customer.ready_time:
-            self.time = picked_customer.ready_time + picked_customer.service_time
-        else:
-            self.time += picked_customer.service_time
+        self.time = max(picked_customer.ready_time + picked_customer.service_time,
+                        self.time + picked_customer.service_time)
         self.path.append(picked_customer)
         self.current_position = picked_customer
-
-    def pick_random_path(self, customers):
-        random_customer = random.choice(customers)
-        self.path.append(random_customer)
-        self.current_position = random_customer
 
     def calculate_distance(self, distances) -> float:
         distance_sum = 0
