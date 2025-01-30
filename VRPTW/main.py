@@ -25,15 +25,15 @@ def parse_file(filename):
 
 
 if __name__ == "__main__":
-    customers = parse_file("r101.txt")
-
+    FILENAME = "rc101.txt"
+    customers = parse_file(FILENAME)
     params = {
         'alpha': 1.5,
         'beta': 1,
         'capacity': 200,
         'customers': customers,
-        'evaporation_rate': 0.4,
-        'iterations': 100,
+        'evaporation_rate': 0.50,
+        'iterations': 300,
         'n_ants': 100
     }
 
@@ -71,6 +71,7 @@ if __name__ == "__main__":
         ax.margins(0.05)
 
     fig.suptitle(
+        f"Plik: {FILENAME}\n"
         f"Parametry: alpha={params['alpha']}, beta={params['beta']}, "
         f"capacity={params['capacity']}, evaporation_rate={params['evaporation_rate']}, "
         f"iterations={params['iterations']}, n_ants={params['n_ants']}\n"
